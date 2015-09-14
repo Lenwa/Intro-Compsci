@@ -1,0 +1,56 @@
+/* Author: Kyle Hicks
+Date Created: 9/12/15
+Laste Modified: 9/14/15
+Description: Printing a receipt
+*/
+
+import javax.swing.JOptionPane;
+import java.text.DecimalFormat;
+
+public class Receipt {
+	
+	public static void main(String[] args){
+		DecimalFormat money = new DecimalFormat("$#,###.00");
+		
+		//item muber 1, 4 shovels at 12.99 each
+		short shovel = 4; 
+		double shovelPrice = 12.99;
+		double sumShovel = shovel * shovelPrice;
+							
+	    //item number 2, 15 bags of super expensive concrete mix
+		short concreteBags = 15;
+		double concretePrice = 105.95;
+		double sumConcrete = concreteBags * concretePrice;
+		
+		//buckets for carrying the concrete, on sale for .99c
+		short bucket = 8;
+		double bucketPrice = 0.99;
+		double sumBucket = bucket * bucketPrice;
+		
+		//Two concrete mixers, to speed up productivity $1499.99/pc
+		short numMachines = 2;
+		double priceMachines = 1499.99;
+		double sumMachine = numMachines * priceMachines;
+						  
+		double totalSum = sumShovel + sumConcrete + sumBucket + sumMachine;
+		
+		System.out.printf("\n%-25s%10s%10s%17s\n\n","SKU    ItemType","Quantity",
+							"Price", "Total per Item");
+		System.out.printf("%-25s%10s%10s%17.10s\n","548945 Black Hammer", 
+						  shovel, shovelPrice,  
+						  money.format(sumShovel));
+		System.out.printf("%-25s%10s%10s%17.10s\n","231059 Concrete Mix",
+							concreteBags,  concretePrice,  
+							money.format(sumConcrete));
+		System.out.printf("%-25s%10s%10s%17.10s\n","023975 5 gal. bucket", 
+							+ bucket, bucketPrice, 
+							money.format(sumBucket));
+		System.out.printf("%-25s%10s%10s%17.10s\n\n\n","843751 Concrete Mixers",
+						  numMachines, priceMachines, 
+						  money.format(sumMachine));
+		System.out.printf("%-25s%37.10s\n\n","Your total is:",
+							money.format(totalSum));
+		System.out.print("THANK YOU FOR SHOPPING AT TIM'S WARHEOUSE\n" +
+						"BE SURE TO FOLLOW TIM ON TWITTER @TIMSTOOLTIME\n");
+	}	
+}
