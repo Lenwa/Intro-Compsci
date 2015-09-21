@@ -1,0 +1,35 @@
+/*Author: Kyle Hicks
+Date Created: 9/21/15
+Last Modified: 9/21/15
+Description: 
+*/
+
+import java.util.Scanner;
+import java.text.DecimalFormat;
+
+//Scanner class is used to read inout from console windows and files
+//Scanner creates an object
+//Type new name = new type()
+//					^ constructor 
+public class ClassEx3 {
+	public static void main(String[] args) {
+		//Read 3 numbers, compute the average
+		int num1, num2, num3;
+		
+		Scanner newInput = new  Scanner(System.in);
+		
+		DecimalFormat display = new DecimalFormat("#.000");
+		
+		//Prompt for and read in three numbers
+		System.out.print("Enter three values: ");
+		// method gets next int and returns to scanner object newInput
+		num1 = newInput.nextInt();
+		num2 = newInput.nextInt();
+		num3 = newInput.nextInt();
+		
+		// Display the average
+		System.out.print("The average is " + 
+							display.format((num1 + num2 + num3) / 3.0));
+	}
+}
+
