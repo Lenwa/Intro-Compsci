@@ -1,0 +1,42 @@
+//conditional operator 
+//assign ternary used instead of if else statement 
+//example
+import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
+
+public class Cond {
+	
+	public static void main(String [] args) {
+		//let price be total price of bill, store as boolean value
+		//check to see if member, gives 5% discount
+		double price = 12.98;
+		boolean member = false;
+		DecimalFormat money = new DecimalFormat("$#,###.00");
+		
+		//conditional opertaor 
+		/*int choice = JOptionPane.showConfirmDialog(null, "Is customer a member?");
+		
+		// Set the value of member depedning on click
+		if(choice == JOptionPane.YES_OPTION)
+			member = true;
+		else 
+			member = false;
+		//give discount if member 
+		if(member)
+			price *= .95;
+		*/
+		
+		/*
+		if(JOptionPane.showConfirmDialog(null, "Is customer a member?")== 
+		JOptionPane.YES_OPTION)
+			price *= .95;
+		*/
+		
+		//conditional 
+		price = (JOptionPane.showConfirmDialog(null, "Is customer a member?")== 
+		JOptionPane.YES_OPTION)?price*.95:price;
+		
+		
+		JOptionPane.showMessageDialog(null, "Your price is " + money.format(price));
+	}
+}
