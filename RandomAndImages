@@ -1,1 +1,25 @@
+import java.util.Random;
+import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
 
+public class Spelling {
+	
+	public static void main(String[] args) {
+		Object ans1; 
+		Random random1 = new Random();
+		//create string of possible answers
+		String possibleAnswer0 = "car";
+		String possibleAnswer1 = "rat";
+		int ans1 = 
+		
+		ans1 = JOptionPane.showInputDialog(null, "Spell what you see", 
+		"Question1", JOptionPane.PLAIN_MESSAGE, 
+		new ImageIcon("Images/" + picShown + ".jpg"), 
+		null, "Enter your answer here");
+		
+		if()
+			picShown = possibleAnswer0;
+		
+		
+	}
+}
