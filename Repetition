@@ -1,0 +1,32 @@
+import javax.swing.JOptionPane;
+import java.util.Random;
+
+public class Repetition {
+    public static void main(String[] args) {
+        //for loop fixed repetition, pre test condition
+            //may not execute at all
+        
+        /*for (start condition, test conidition, update ); {
+            instructions 
+             }
+        */
+        Random rand = new Random();
+        for (int i=0; i < 100; i++){
+            JOptionPane.showMessageDialog(null, rand.nextInt() + 1 + " ");
+        }
+        int sum = 0;
+        
+        for(int i=0; i <= 5000; i++){
+            sum += i * 2;
+            JOptionPane.showMessageDialog(null, "i= " + i +") = " + sum);
+        // print 
+        }
+        
+       
+        
+        //while loop variable control, pretest condition
+            //may not execute at all
+        //do...while looop, variable controllable, post test condition
+            //executes at least once
+    }
+}
