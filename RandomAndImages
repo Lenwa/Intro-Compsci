@@ -1,4 +1,3 @@
-
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -6,8 +5,14 @@ import javax.swing.JOptionPane;
 public class SpellingGame {
 	
     public static void main(String[] args){
-	for(int i = 0; i <= 14; i++);
-		
+	
+	String timesPlay;
+	timesPlay = JOptionPane.showInputDialog(null, "How many times would you like"
+	+ "the spelling game");
+	int tP1 = Integer.parseInt(timesPlay);
+	int count=0;
+	while(count < tP1){
+	count++;
 	Object ans0, ans1, ans2, ans3, ans4, ans5, ans6, ans7, ans8, ans9;
         Object ans10, ans11, ans12, ans13;
 		
@@ -18,7 +23,7 @@ public class SpellingGame {
 	String dog = "dog"; 
 	String fire = "fire";
 	String four = "four";
-	String lake = "lake";
+	String water = "water";
 	String moon = "moon";
 	String rocket = "rocket";
 	String ten = "ten";
@@ -28,8 +33,8 @@ public class SpellingGame {
 		
 	
 	Random rand = new Random();
-	int choice = rand.nextInt(14)+1;
-		
+	int choice = rand.nextInt(13)+1;
+	
 		
 	if(choice == 0){
             ans0 = JOptionPane.showInputDialog(null, "Spell what you see", 
@@ -38,10 +43,12 @@ public class SpellingGame {
 		null, "Enter your answer here");
 	
 		if(ans0.equals(ball)){
-                    JOptionPane.showMessageDialog(null, "Sorry, that's not correct");
+            JOptionPane.showMessageDialog(null, "Sorry, that's not correct");
+					
 		}
 		else{
-                    JOptionPane.showMessageDialog(null, "GREAT JOB");
+            JOptionPane.showMessageDialog(null, "GREAT JOB");
+			return;
 		}
 	}
 			
@@ -52,34 +59,27 @@ public class SpellingGame {
 		null, "Enter your answer here");
 			
 			
-            if(ans1.equals(bear)){
-                JOptionPane.showMessageDialog(null, "Great Job! That's right!");
-            }
-                else{
-                    JOptionPane.showMessageDialog(null, "Incorrect, next time!");
-			}
+        if(ans1.equals(bear)){
+            JOptionPane.showMessageDialog(null, "Great Job! That's right!");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Incorrect, next time!");
 		}
-        if(choice == 2){
-            ans2 = JOptionPane.showInputDialog(null, "Spell what you see", 
-            "Question 3", JOptionPane.PLAIN_MESSAGE, 
-            new ImageIcon("Images/" + bridge + ".jpg"), null, 
+	}
+    if(choice == 2){
+        ans2 = JOptionPane.showInputDialog(null, "Spell what you see", 
+        "Question 3", JOptionPane.PLAIN_MESSAGE, 
+        new ImageIcon("Images/" + bridge + ".jpg"), null, 
                     "Enter your answer here");
-		}
-            if(ans2 == bridge){
-				JOptionPane.showMessageDialog(null, 
-                "Great Job, that's correct");
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "Sorry that's incorrect");
-            }
-        
-            if(ans2.equals(bridge)){
-                JOptionPane.showMessageDialog(null, "Great Job, that's correct!");
-		}
-		else{
-                    JOptionPane.showMessageDialog(null, "Sorry that's incorrect");
-		}
 		
+        if(ans2.equals(bridge)){
+			JOptionPane.showMessageDialog(null, "Great Job, that's correct");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Sorry that's incorrect");
+        }
+        
+	}	
                 
 	if(choice == 3){
             ans3 = JOptionPane.showInputDialog(null, "Spell what you see", 
@@ -100,7 +100,7 @@ public class SpellingGame {
             "Question 5", JOptionPane.PLAIN_MESSAGE, 
             new ImageIcon("Images/" + dog + ".jpg"), null, 
             "Enter your answer here");
-            if(ans4 == dog){
+            if(ans4.equals(dog)){
                 JOptionPane.showMessageDialog(null, "Great Job, that's correct!");
             }
             else{
@@ -109,15 +109,15 @@ public class SpellingGame {
 	}
 		
 	if(choice == 5){
-            ans5 = JOptionPane.showInputDialog(null, "Spell what you see", 
-            "Question 6", JOptionPane.PLAIN_MESSAGE, 
-            new ImageIcon("Images/" + fire + ".jpg"), null, 
-            "Enter your answer here");
-                if(ans5 == dog){
-		JOptionPane.showMessageDialog(null, "Great job, that's correct");
+        ans5 = JOptionPane.showInputDialog(null, "Spell what you see", 
+        "Question 6", JOptionPane.PLAIN_MESSAGE, 
+        new ImageIcon("Images/" + fire + ".jpg"), null, 
+        "Enter your answer here");
+        if(ans5.equals(fire)){
+			JOptionPane.showMessageDialog(null, "Great job, that's correct");
 		}
 		else{
-		JOptionPane.showMessageDialog(null, "Sorry that's incorrect");
+			JOptionPane.showMessageDialog(null, "Sorry that's incorrect");
 		}
 	}
 		
@@ -126,7 +126,7 @@ public class SpellingGame {
             "Question 7", JOptionPane.PLAIN_MESSAGE, 
             new ImageIcon("Images/" + four + ".jpg"),
             null, "Enter your answer here");
-            if(ans6 == four){
+            if(ans6.equals(four)){
                 JOptionPane.showMessageDialog(null,"Great job! That's correct");
             }
             else{
@@ -137,17 +137,99 @@ public class SpellingGame {
         if(choice == 7){
             ans7 = JOptionPane.showInputDialog(null, "Spell what you see",
                 "Question 8", JOptionPane.PLAIN_MESSAGE, 
-                new ImageIcon("Images/" + four + ".jpg"), null, 
+                new ImageIcon("Images/" + water + ".jpg"), null, 
                 "Enter your answer here");
-                if(ans7 == four){
+                if(ans7.equals(water)){
                 JOptionPane.showMessageDialog(null, "That's correct, great job!");
                 }
                 else{
-                  JOptionPane.showMessageDialog(null, "Sorry that's not correct");
+                  JOptionPane.showMessageDialog(null, "Sorry that's not incorrect");
                 }
             }
             
-        }
-}
-
+        
+		
+		if(choice == 8){
+			ans8 = JOptionPane.showInputDialog(null, "Spell what you see", 
+			"Question " + choice, JOptionPane.PLAIN_MESSAGE, 
+			new ImageIcon("Images/" + moon + ".jpg"), null, 
+			"Enter your answer here");
+			if(ans8.equals(moon)){
+				JOptionPane.showMessageDialog(null, "That's correct! Great job!");
+			}
+			else{
+				JOptionPane.showMessageDialog(null, "Sorry that's incorrect");
+			}
+		}
+		
+		if(choice == 9){
+			ans9 = JOptionPane.showInputDialog(null, "Spell what you see", 
+			"Question " + choice, JOptionPane.PLAIN_MESSAGE, 
+			new ImageIcon("Images/" + rocket + ".jpg"), null, 
+			"Enter your answer here"); 
+			if(ans9.equals(rocket)){
+				JOptionPane.showMessageDialog(null, "That's correct, geat job!");
+			}
+			else{
+				JOptionPane.showMessageDialog(null, "That's incorrect, sorry");
+			}
+		}
+		
+		if(choice == 10){
+			ans10 = JOptionPane.showInputDialog(null, "spell what you see", 
+			"Question " + choice, JOptionPane.PLAIN_MESSAGE, 
+			new ImageIcon("Images/" + ten + ".jpg"), null,
+			"Enter your answer here");
+			if(ans10.equals(ten)){
+				JOptionPane.showMessageDialog(null, "That's correct, great job!");
+			}
+			else{
+				JOptionPane.showMessageDialog(null, "that's incorrect" +
+				"the correct answer is " + ten);
+			}
+			
+		}
+		
+		if(choice == 11){
+			ans11 = JOptionPane.showInputDialog(null, "Spell what you see",
+			"Question " + choice, JOptionPane.PLAIN_MESSAGE, 
+			new ImageIcon("Images/" + three + ".jpg"), null, 
+			"Enter your answer here");
+			if(ans11.equals(three)){
+				JOptionPane.showMessageDialog(null, "Great job, that's right!");
+			}
+			else{
+				JOptionPane.showMessageDialog(null, "Sorry that's incorrect");
+			}
+		}
+		
+		if(choice == 12){
+			ans12 = JOptionPane.showInputDialog(null, "Spell what you see",
+			"Question " + choice, JOptionPane.PLAIN_MESSAGE, 
+			new ImageIcon("Images/" + tree + ".jpg"), null, 
+			"Enter your answer here");
+			if(ans12.equals(tree)){
+				JOptionPane.showMessageDialog(null, "That's correct, grgeat job!");
+			}
+			else{
+				JOptionPane.showMessageDialog(null, "Sorry that's incorrect");
+			}
+			
+		}
+		
+		if(choice == 13){
+			ans13 = JOptionPane.showInputDialog(null, "Spell what you see",
+			"Question " + choice, JOptionPane.PLAIN_MESSAGE, 
+			new ImageIcon("Images/" + truck + ".jpg"), null, 
+			"Enter your answer here");
+			if(ans13.equals(truck)){
+				JOptionPane.showMessageDialog(null, "Great job, that's correct");
+			}
+			else{
+				JOptionPane.showMessageDialog(null, "Sorry, better luck next time");
+			}
+		}
 	
+	}
+	}
+}
