@@ -1,1 +1,62 @@
+import java.io.*;
+import javax.swing.*;
+import java.util.*;
 
+public class SpellingDynamic {
+    
+    public static void main(String[] args) {
+        File folder = new File("C:\\Users\\Kyle\\Desktop\\Programs\\Images");
+        File[] listOfFiles = folder.listFiles();
+        ArrayList<String> imgNames = new ArrayList<>();
+        Object answer;
+        String timePlay;
+        timePlay = JOptionPane.showInputDialog(null, "How many times " 
+        + "would you like to play the spelling game?");
+        if(timePlay == null){
+            JOptionPane.showMessageDialog(null, "Goodbye!");
+            System.exit(0);
+        }
+        int timeP1 = Integer.parseInt(timePlay);
+        System.out.println();
+        for (File listOfFile : listOfFiles) {
+            String in = listOfFile.getName();
+            imgNames.add(in);
+        }
+        int count = 0, score = 0;
+        ArrayList<String> previous = new ArrayList<>();
+        while(count < timeP1){
+                count++;
+        Random rand = new Random();
+        int numChoice = imgNames.size();        
+        int choice = rand.nextInt(numChoice);
+        String spellingWord = imgNames.get(choice);      
+        boolean check = previous.contains(spellingWord);
+        previous.add(spellingWord);
+        if(check == true){
+            count--;
+            continue;
+        }
+        String word = spellingWord.substring(0, spellingWord.indexOf('.'));
+        answer = JOptionPane.showInputDialog(null, "Enter what you see", 
+        "Your score is: " + score + " out of" + timeP1, 
+        JOptionPane.PLAIN_MESSAGE, 
+        new ImageIcon("C:\\Users\\Kyle\\Desktop\\Programs\\Images\\" + word + ".jpg"), 
+        null, "Enter your answer here");
+        if(answer == null){
+            JOptionPane.showMessageDialog(null, "Goodbye!");
+            System.exit(0);
+        }
+        if(answer.equals(word)){
+            score++;
+            JOptionPane.showMessageDialog(null, "Great job, that's correct");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Sorry that's incorrect, "
+                      + "the correct word is " + word);
+        }       
+        }
+        System.out.println("Final count " + count );
+        JOptionPane.showMessageDialog(null, "Thanks for playing! You scored "
+            + score + " points!");
+    }
+}
