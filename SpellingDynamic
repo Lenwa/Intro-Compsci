@@ -81,44 +81,45 @@ public class SpellingDynamic {
         //and it loops back to the beginning of the while loop, having never 
         //displayed the repeat picture. this ensures that each picture is 
         //displayed once 
-        if(check == true){
+        if(check){
             //decrements count, otherwise when it loops back to the beginning
             //count would go up again and the number of pictures displayed 
             //would be shorter than what the user input
             count--;
-            //returns to the top of the loop
-            continue;
         }
-        //uses substring method to chop off the file type at the end of the 
-        //word we want to spell
-        String word = spellingWord.substring(0, spellingWord.indexOf('.'));
-        //asks user to spell what image icon is displayed
-        //icon is randomly selected using the imgNames arrays
-        answer = JOptionPane.showInputDialog(null, "Enter what you see", 
-        "Question " + count + " out of" + timeP1, 
-        JOptionPane.PLAIN_MESSAGE, 
-        new ImageIcon("C:\\Users\\Kyle\\Desktop\\Programs\\Images\\" + 
-            spellingWord), null, "Enter your answer here");
-        //handles null exception pointers
-        //tells user how many correct of how many they actually did if they quit 
-        //early
-        if(answer == null){ 
-            JOptionPane.showMessageDialog(null, "Thanks for playing! "
-                    + "You spelled " +
-           + score + " out of " + count + " words correctly!");
-            System.exit(0);
-        }
-        //checks to see if they spelled the word correectly
-        //increases their score if true
-        if(answer.equals(word)){
-            score++;
-            JOptionPane.showMessageDialog(null, "Great job, that's correct");
-        }
-        //if the answer is wrong displays incorrect pane and the correct spelling
-        else{
-            JOptionPane.showMessageDialog(null, "Sorry that's incorrect, "
-                      + "the correct word is " + word);
-        }       
+		else{
+			//uses substring method to chop off the file type at the end of the 
+			//word we want to spell
+			String word = spellingWord.substring(0, spellingWord.indexOf('.'));
+			//asks user to spell what image icon is displayed
+			//icon is randomly selected using the imgNames arrays
+			answer = JOptionPane.showInputDialog(null, "Enter what you see", 
+			"Question " + count + " out of" + timeP1, 
+			JOptionPane.PLAIN_MESSAGE, 
+			new ImageIcon("C:\\Users\\Kyle\\Desktop\\Programs\\Images\\" + 
+				spellingWord), null, "Enter your answer here");
+			//handles null exception pointers
+			//tells user how many correct of how many they actually did if they quit 
+			//early
+			if(answer == null){ 
+				JOptionPane.showMessageDialog(null, "Thanks for playing! "
+						+ "You spelled " +
+			   + score + " out of " + count + " words correctly!");
+				System.exit(0);
+			}
+			//checks to see if they spelled the word correectly
+			//increases their score if true
+			
+			if(answer.toString().toLowerCase().equals(word)){
+				score++;
+				JOptionPane.showMessageDialog(null, "Great job, that's correct");
+			}
+			//if the answer is wrong displays incorrect pane and the correct spelling
+			else{
+				JOptionPane.showMessageDialog(null, "Sorry that's incorrect, "
+						  + "the correct word is " + word);
+			}   
+		}
         }        
         //displays a message pane telling them how many they got right out of 
         //number they answered
