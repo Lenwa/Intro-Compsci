@@ -2,10 +2,15 @@
 //10/19/15
 // LM: 
 //functions and methods
+import javax.swing.JOptionPane;
 
 public class Functions {
 	public static void main(String[] args){
-		System.out.println("E = " + Math.E);
+		String data;
+		double radican;
+		int index;
+		int value;
+		/*System.out.println("E = " + Math.E);
 		System.out.println("pi = " + Math.PI);
 		System.out.println("arccos(1/sgrt2) = " + Math.acos(1/1.41));
 		System.out.println("Pi/4 = " + Math.PI/4);
@@ -15,10 +20,40 @@ public class Functions {
 		System.out.println("Triplet 3/4/5 = "+ Math.hypot(8, 17));
 		System.out.println("2^5 = " + Math.pow(2, 5));
 		System.out.println("562 = " + Math.pow(5, 2));
+		*/
+		/*
+		data = JOptionPane.showInputDialog(null, "Radican value?");
+		radican = Double.parseDouble(data);
+		//OR radican = Double.parseDouble(JOptionPane.showInputDialog(null, "Radicand value?"));
+		data = JOptionPane.showInputDialog(null, "Index value?");
+		index = Integer.parseInt(data);
+		JOptionPane.showMessageDialog(null, radican + "^(1/" + index + ") = " +
+								qrt(radican, index));
+		*/
 		//how to create a method that calculates nth roots
+		
+		System.out.println("Discrim = " + discrim(2,4,5));
+		data = JOptionPane.showInputDialog(null, "Value?");
+		value = Integer.parseInt(data);
+		JOptionPane.showMessageDialog(null, value + "!=" + factorial(value));
+		
 		}
 		
 	public static double qrt(double radican, int index){
 		return Math.pow(radican, 1.0/index); 
 	}//complete signature of a method
+	
+	//Discriminant method
+	public static double discrim(double a, double b, double c){
+		double temp = b*b - 4*a*c;
+		return temp;
+	}
+	//Factorial method
+	public static int(int n){
+		int product = n;
+		for(int i=n-1; i>1; i--){
+			product *= i;
+			return product;
+		}
+	} 
 }
