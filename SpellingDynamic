@@ -6,35 +6,21 @@ import java.util.ArrayList;
 
 public class SpellingDynamic {
     
-    public static void main(String[] args) {
+    public static void main(String[] args) {        
         
-        //path will change depending on where the file is stored
-        File folder = new File("C:\\Users\\Kyle\\Desktop\\Programs\\Images");
-        //creates array of all file names in our folder object
-        File[] listOfFiles = folder.listFiles();
-        //used to store the file names
+        File folder = new File("C:\\Users\\Kyle\\Desktop\\Programs\\Images");     
+        File[] listOfFiles = folder.listFiles();       
         ArrayList<String> imgNames = new ArrayList<>();
-        //used to make sure picture only displays once
-        ArrayList<String> previous = new ArrayList<>();
-        //used for JOptionPane Input Dialog 
-        Object answer;
-        //declare string variable outside try catch block
-        String timePlay;
-        //used in while loop
-        int count = 0, score = 0;
-        //located inside try block, used in while loop
-        int timeP1;
-        //creates random variable
-        Random rand = new Random();  
-        //iterates through file array, incrementing index by 1, and getting
-        //the name of every file and storing them is imgNames array
+        ArrayList<String> previous = new ArrayList<>();        
+        Object answer;        
+        String timePlay;        
+        int count = 0, score = 0;        
+        int timeP1 = 0;
+        Random rand = new Random();
         for (File listOfFile : listOfFiles) {
             imgNames.add(listOfFile.getName());
-        }
-        //sets to number of files in images folder
-        int numChoice = imgNames.size();  
-        //try catch block, only want integer input, if NumberFormatException is
-        //caught it sets the number of questions asked to the number of files
+        } 
+        int numChoice = imgNames.size();         
         try{
             timePlay = JOptionPane.showInputDialog(null, "How many times " 
             + "would you like to play the spelling game?");
@@ -43,8 +29,9 @@ public class SpellingDynamic {
                 JOptionPane.showMessageDialog(null, "Goodbye!");
                 System.exit(0);
             }
-            //parses string into int 
-            timeP1 = Integer.parseInt(timePlay);
+            else{
+                timeP1 = Integer.parseInt(timePlay);
+            }
          }
          catch(NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Invalid input, setting number "
@@ -52,79 +39,61 @@ public class SpellingDynamic {
             "Oops", JOptionPane.WARNING_MESSAGE);
             timeP1 = numChoice;
         }
-        //if amount of times exceeds maximum number of files sets to max
         if(timeP1 > numChoice){
             timeP1 = numChoice;
-        }
-        //if a negative number is entered sets it to max
+        }      
         if(timeP1 < 0){
             JOptionPane.showMessageDialog(null, "Can't except negative numbers "
                     + ", setting number of questions to: " + numChoice,                
                     "Whoops", JOptionPane.WARNING_MESSAGE);
             timeP1 = numChoice;
         }   
-        //main while loop
-        while(count < timeP1){
-                //increments every time though
-                count++;
-        //random number chosen on based on number of files
-        int choice = rand.nextInt(numChoice);
-        //stores whatever filename is located at that index in imgNames array
-        String spellingWord = imgNames.get(choice);      
-        //if spellingWord is already in the array named previous, sets check to 
-        //true
-        boolean check = previous.contains(spellingWord);
-        //adds spellingWord to the array named previous, it's located here so 
-        //it doesn't cause the loop to never display
-        previous.add(spellingWord);
-        //if check is true it means that the picture has been displayed before
-        //and it loops back to the beginning of the while loop, having never 
-        //displayed the repeat picture. this ensures that each picture is 
-        //displayed once 
-        if(check){
-            //decrements count, otherwise when it loops back to the beginning
-            //count would go up again and the number of pictures displayed 
-            //would be shorter than what the user input
-            count--;
+        while(count < timeP1){                
+                count++;        
+            int choice = rand.nextInt(numChoice);
+            String spellingWord = imgNames.get(choice);      
+            boolean check = previous.contains(spellingWord);
+            previous.add(spellingWord);       
+            if(check){
+                count--;
+            }
+            else{			
+                String word = spellingWord.substring(0, spellingWord.indexOf('.'));		
+                answer = JOptionPane.showInputDialog(null, "Enter what you see", 
+                "Question " + count + " out of" + timeP1, 
+                JOptionPane.PLAIN_MESSAGE, 
+                new ImageIcon("C:\\Users\\Kyle\\Desktop\\Programs\\Images\\" + 
+                spellingWord), null, "Enter your answer here");                
+                if(answer == null){ 
+                    JOptionPane.showMessageDialog(null, "Thanks for playing! "
+                    + "You spelled " +
+                    + score + " out of " + count + " words correctly!");
+                    System.exit(0);
+                    }
+                else{
+                if(answer.toString().toLowerCase().equals(word)){
+                    score++;
+                    JOptionPane.showMessageDialog(null, "Great job, "
+                        + "that's correct", "Great job!", 
+                        JOptionPane.PLAIN_MESSAGE,
+                        new ImageIcon("C:\\Users\\Kyle\\Desktop\\Programs\\Icons"
+                                + "\\clapping.gif"));
+                    }			
+                else{
+                    JOptionPane.showMessageDialog(null, 
+                    "Sorry that's incorrect.\n The correct word is:\n " + word, 
+                    "Oops", JOptionPane.PLAIN_MESSAGE,
+                    new ImageIcon("C:\\Users\\Kyle\\Desktop\\Programs\\"
+                            + "Icons\\no.gif"));
+                    }   
+                }
+            }
         }
-		else{
-			//uses substring method to chop off the file type at the end of the 
-			//word we want to spell
-			String word = spellingWord.substring(0, spellingWord.indexOf('.'));
-			//asks user to spell what image icon is displayed
-			//icon is randomly selected using the imgNames arrays
-			answer = JOptionPane.showInputDialog(null, "Enter what you see", 
-			"Question " + count + " out of" + timeP1, 
-			JOptionPane.PLAIN_MESSAGE, 
-			new ImageIcon("C:\\Users\\Kyle\\Desktop\\Programs\\Images\\" + 
-				spellingWord), null, "Enter your answer here");
-			//handles null exception pointers
-			//tells user how many correct of how many they actually did if they quit 
-			//early
-			if(answer == null){ 
-				JOptionPane.showMessageDialog(null, "Thanks for playing! "
-						+ "You spelled " +
-			   + score + " out of " + count + " words correctly!");
-				System.exit(0);
-			}
-			//checks to see if they spelled the word correectly
-			//increases their score if true
-			
-			if(answer.toString().toLowerCase().equals(word)){
-				score++;
-				JOptionPane.showMessageDialog(null, "Great job, that's correct");
-			}
-			//if the answer is wrong displays incorrect pane and the correct spelling
-			else{
-				JOptionPane.showMessageDialog(null, "Sorry that's incorrect, "
-						  + "the correct word is " + word);
-			}   
-		}
-        }        
-        //displays a message pane telling them how many they got right out of 
-        //number they answered
-        JOptionPane.showMessageDialog(null, "You spelled " +
+       JOptionPane.showMessageDialog(null, "Thanks for playing!\n"
+               + "You spelled " +
            + score + " out of " + timeP1 + " words correctly!", 
-           "Thanks for playing!", JOptionPane.INFORMATION_MESSAGE);
-    }
+           "Thanks for playing!", JOptionPane.PLAIN_MESSAGE,
+           new ImageIcon("C:/Users/Kyle/Desktop/Programs/Icons/fireworks.gif"));
+    
+}
 }
