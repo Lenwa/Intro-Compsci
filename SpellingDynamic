@@ -71,19 +71,19 @@ public class SpellingDynamic {
                     System.exit(0);
                     }
                 else{
-                if(answer.toString().toLowerCase().equals(word)){
-                    score++;
-                    JOptionPane.showMessageDialog(null, "Great job, "
+                    if(answer.toString().toLowerCase().equals(word)){
+                        score++;
+                        JOptionPane.showMessageDialog(null, "Great job, "
                         + "that's correct", "Great job!", 
                         JOptionPane.PLAIN_MESSAGE,
                         new ImageIcon("C:\\Users\\Kyle\\Desktop\\Programs\\Icons"
                                 + "\\clapping.gif"));
                     }			
-                else{
-                    JOptionPane.showMessageDialog(null, 
-                    "Sorry that's incorrect.\n The correct word is:\n " + word, 
-                    "Oops", JOptionPane.PLAIN_MESSAGE,
-                    new ImageIcon("C:\\Users\\Kyle\\Desktop\\Programs\\"
+                    else{
+                        JOptionPane.showMessageDialog(null, 
+                        "Sorry that's incorrect.\n The correct word is:\n " 
+                        + word, "Oops", JOptionPane.PLAIN_MESSAGE,
+                        new ImageIcon("C:\\Users\\Kyle\\Desktop\\Programs\\"
                             + "Icons\\no.gif"));
                     }   
                 }
