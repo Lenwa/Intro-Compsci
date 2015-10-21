@@ -1,13 +1,39 @@
 import java.io.File;
-import javax.swing.JOptionPane;
-import javax.swing.ImageIcon;
+import javax.swing.*;
 import java.util.Random;
 import java.util.ArrayList;
+import java.awt.event.*;
+import java.awt.*;
 
 public class SpellingDynamic {
     
     public static void main(String[] args) {        
-        
+        ImageIcon adventure = new ImageIcon("C:\\Users\\Kyle\\"
+                + "Desktop\\Programs\\Icons\\adventure.jpeg");
+        JFrame frame = new JFrame();
+        frame.setTitle("Spelling Adventure");
+        frame.setVisible(true);     
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(1200, 760);
+        frame.setLocationRelativeTo(null);
+        JPanel panel = new JPanel();
+        JLabel label = new JLabel(adventure);
+        JButton button = new JButton("START");
+        Font font = new Font("Serif", Font.BOLD, 25);
+        button.setFont(font);
+        button.addActionListener(new Action());
+        button.setAlignmentX(panel.CENTER_ALIGNMENT);
+        button.setAlignmentY(panel.BOTTOM_ALIGNMENT);
+        button.setPreferredSize(new Dimension(150, 40));
+        panel.setBackground(Color.red);
+        panel.add(button);
+        panel.add(label);
+        frame.add(panel);
+    }
+    
+    static class Action implements ActionListener{
+        public void actionPerformed (ActionEvent ev1){
+            
         File folder = new File("C:\\Users\\Kyle\\Desktop\\Programs\\Images");     
         File[] listOfFiles = folder.listFiles();       
         ArrayList<String> imgNames = new ArrayList<>();
@@ -23,11 +49,10 @@ public class SpellingDynamic {
         int numChoice = imgNames.size();         
         try{
             timePlay = JOptionPane.showInputDialog(null, "How many times " 
-            + "would you like to play the spelling game?");
-            //handles nullpointerexception
-            if(timePlay == null){
-                JOptionPane.showMessageDialog(null, "Goodbye!");
-                System.exit(0);
+            + "would you like to play the spelling game?", "Welcome to Spelling "
+                    + "Adventure", JOptionPane.QUESTION_MESSAGE);
+            if(timePlay == null){              
+                return;
             }
             else{
                 timeP1 = Integer.parseInt(timePlay);
@@ -64,36 +89,32 @@ public class SpellingDynamic {
                 JOptionPane.PLAIN_MESSAGE, 
                 new ImageIcon("C:\\Users\\Kyle\\Desktop\\Programs\\Images\\" + 
                 spellingWord), null, "Enter your answer here");                
-                if(answer == null){ 
-                    JOptionPane.showMessageDialog(null, "Thanks for playing! "
-                    + "You spelled " +
-                    + score + " out of " + count + " words correctly!");
-                    System.exit(0);
-                    }
+                if(answer == null){               
+                    break;
+                    }                    
                 else{
                     if(answer.toString().toLowerCase().equals(word)){
                         score++;
-                        JOptionPane.showMessageDialog(null, "Great job, "
-                        + "that's correct", "Great job!", 
+                        JOptionPane.showMessageDialog(null, "", "Great job!", 
                         JOptionPane.PLAIN_MESSAGE,
                         new ImageIcon("C:\\Users\\Kyle\\Desktop\\Programs\\Icons"
-                                + "\\clapping.gif"));
+                                + "\\correct.png"));
                     }			
                     else{
                         JOptionPane.showMessageDialog(null, 
-                        "Sorry that's incorrect.\n The correct word is:\n " 
-                        + word, "Oops", JOptionPane.PLAIN_MESSAGE,
+                        "You entered:\n" + answer + "\n The correct spelling "
+                         + "is\n "+ word , "Oops", JOptionPane.PLAIN_MESSAGE,
                         new ImageIcon("C:\\Users\\Kyle\\Desktop\\Programs\\"
-                            + "Icons\\no.gif"));
+                            + "Icons\\incorrect.png"));
                     }   
                 }
             }
         }
        JOptionPane.showMessageDialog(null, "Thanks for playing!\n"
                + "You spelled " +
-           + score + " out of " + timeP1 + " words correctly!", 
+           + score + " out of " + count + " words correctly!", 
            "Thanks for playing!", JOptionPane.PLAIN_MESSAGE,
-           new ImageIcon("C:/Users/Kyle/Desktop/Programs/Icons/fireworks.gif"));
-    
+           new ImageIcon("C:/Users/Kyle/Desktop/Programs/Icons/byefrog.png"));
+    }
 }
 }
