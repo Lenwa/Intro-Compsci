@@ -39,9 +39,8 @@ public class SpellingDynamic {
         frame.add(panel);
     }
     
-    static class Action implements ActionListener{
+    private static class Action implements ActionListener{
         public void actionPerformed (ActionEvent ev1){
-            
         File folder = new File("Images");     
         File[] listOfFiles = folder.listFiles();       
         ArrayList<String> imgNames = new ArrayList<>();
@@ -51,6 +50,7 @@ public class SpellingDynamic {
         int count = 0, score = 0;        
         int timeP1 = 0;
         Random rand = new Random();
+        //Strng[] imgNmaes = folder.list();
         for (File listOfFile : listOfFiles) {
             imgNames.add(listOfFile.getName());
         } 
@@ -76,7 +76,7 @@ public class SpellingDynamic {
         if(timeP1 > numChoice){
             timeP1 = numChoice;
         }      
-        if(timeP1 < 0){
+        else if(timeP1 < 0){
             JOptionPane.showMessageDialog(null, "Can't except negative numbers "
                     + ", setting number of questions to: " + numChoice,                
                     "Whoops", JOptionPane.WARNING_MESSAGE);
