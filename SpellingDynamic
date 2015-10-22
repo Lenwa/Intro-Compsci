@@ -1,3 +1,12 @@
+/*Author Kyle
+Images folder can be found at:
+https://drive.google.com/open?id=0BwW8gHWb2VOvNXFIMVRJWWl5ME0
+Icon Folder can be found at:
+https://drive.google.com/open?id=0BwW8gHWb2VOvSEZPeDBXZ0pYbHM
+Just save both folders in the same folder, otherwise
+need to link the correct path to wherever you saved them
+*/
+
 import java.io.File;
 import javax.swing.*;
 import java.util.Random;
@@ -8,8 +17,7 @@ import java.awt.*;
 public class SpellingDynamic {
     
     public static void main(String[] args) {        
-        ImageIcon adventure = new ImageIcon("C:\\Users\\Kyle\\"
-                + "Desktop\\Programs\\Icons\\adventure.jpeg");
+        ImageIcon adventure = new ImageIcon("Icons\\adventure.jpeg");
         JFrame frame = new JFrame();
         frame.setTitle("Spelling Adventure");
         frame.setVisible(true);     
@@ -34,7 +42,7 @@ public class SpellingDynamic {
     static class Action implements ActionListener{
         public void actionPerformed (ActionEvent ev1){
             
-        File folder = new File("C:\\Users\\Kyle\\Desktop\\Programs\\Images");     
+        File folder = new File("Images");     
         File[] listOfFiles = folder.listFiles();       
         ArrayList<String> imgNames = new ArrayList<>();
         ArrayList<String> previous = new ArrayList<>();        
@@ -88,8 +96,8 @@ public class SpellingDynamic {
                 answer = JOptionPane.showInputDialog(null, "Enter what you see", 
                 "Question " + count + " out of" + timeP1, 
                 JOptionPane.PLAIN_MESSAGE, 
-                new ImageIcon("C:\\Users\\Kyle\\Desktop\\Programs\\Images\\" + 
-                spellingWord), null, "Enter your answer here");                
+                new ImageIcon("Images\\" + spellingWord), null, 
+                "Enter your answer here");                
                 if(answer == null){               
                     break;
                     }                    
@@ -98,15 +106,13 @@ public class SpellingDynamic {
                         score++;
                         JOptionPane.showMessageDialog(null, "", "Great job!", 
                         JOptionPane.PLAIN_MESSAGE,
-                        new ImageIcon("C:\\Users\\Kyle\\Desktop\\Programs\\Icons"
-                                + "\\correct.png"));
+                        new ImageIcon("Icons\\correct.png"));
                     }			
                     else{
                         JOptionPane.showMessageDialog(null, 
                         "You entered:\n" + answer + "\n The correct spelling "
                          + "is\n "+ word , "Oops", JOptionPane.PLAIN_MESSAGE,
-                        new ImageIcon("C:\\Users\\Kyle\\Desktop\\Programs\\"
-                            + "Icons\\incorrect.png"));
+                        new ImageIcon("Icons\\incorrect.png"));
                     }   
                 }
             }
@@ -115,7 +121,7 @@ public class SpellingDynamic {
                + "You spelled " +
            + score + " out of " + count + " words correctly!", 
            "Thanks for playing!", JOptionPane.PLAIN_MESSAGE,
-           new ImageIcon("C:/Users/Kyle/Desktop/Programs/Icons/byefrog.png"));
+           new ImageIcon("Icons/byefrog.png"));
     }
 }
 }
