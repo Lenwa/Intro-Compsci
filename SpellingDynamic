@@ -106,7 +106,7 @@ public class SpellingDynamic {
                         score++;
                         JOptionPane.showMessageDialog(null, "", "Great job!", 
                         JOptionPane.PLAIN_MESSAGE,
-                        new ImageIcon("Icons\\correct.png"));
+                        new ImageIcon("Icons\\goodjob.gif"));
                     }			
                     else{
                         JOptionPane.showMessageDialog(null, 
