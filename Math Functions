@@ -32,13 +32,20 @@ public class Functions {
 		*/
 		//how to create a method that calculates nth roots
 		
-		System.out.println("Discrim = " + discrim(2,4,5));
-		data = JOptionPane.showInputDialog(null, "Value?");
-		value = Integer.parseInt(data);
-		JOptionPane.showMessageDialog(null, value + "!=" + factorial(value));
-		
+		//System.out.println("Discrim = " + discrim(2,4,5));
+	
+		while(true){
+			data = JOptionPane.showInputDialog(null, "Value?");
+			value = Integer.parseInt(data);
+			try{
+				JOptionPane.showMessageDialog(null, value + "!=" + factorial(value));
+			}
+			catch(NumberFormatException e){
+				JOptionPane.showMessageDialog(null, "Can not calculate factorial of a negative number");
+			}
+
 		}
-		
+	}
 	public static double qrt(double radican, int index){
 		return Math.pow(radican, 1.0/index); 
 	}//complete signature of a method
@@ -49,11 +56,22 @@ public class Functions {
 		return temp;
 	}
 	//Factorial method
-	public static int(int n){
-		int product = n;
-		for(int i=n-1; i>1; i--){
-			product *= i;
-			return product;
+	//try 
+	public static BigInteger factorial(BigInteger n) {
+		BigInteger prod = new BigInteger(n.toString());
+		if(n.compareTo(BigInteger.ZERO)) == -1){
+			throw new NumberFormatException();
 		}
-	} 
+		if(n.compareTo(BigInteger.ZERO) == 0) {
+			prod = BigInter.ONE;
+		}
+		// If n is negative, "throw an exception"
+		else{
+			prod = n;
+			for(BigInteger i=n-1; i>1; i--)
+				prod *= i;			
+		}
+		return prod;
+	}
+	
 }
