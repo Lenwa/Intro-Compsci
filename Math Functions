@@ -2,9 +2,13 @@
 //10/19/15
 // LM: 
 //functions and methods
+//Kyle Hicks
+//10/19/15
+// LM: 
+//functions and methods
 import javax.swing.JOptionPane;
-
-public class Functions {
+import java.math.BigInteger;
+public class Method {
 	public static void main(String[] args){
 		String data;
 		double radican;
@@ -38,7 +42,8 @@ public class Functions {
 			data = JOptionPane.showInputDialog(null, "Value?");
 			value = Integer.parseInt(data);
 			try{
-				JOptionPane.showMessageDialog(null, value + "!=" + factorial(value));
+				JOptionPane.showMessageDialog(null, value + "!=" + 
+				factorial(new BigInteger(data)));
 			}
 			catch(NumberFormatException e){
 				JOptionPane.showMessageDialog(null, "Can not calculate factorial of a negative number");
@@ -59,17 +64,17 @@ public class Functions {
 	//try 
 	public static BigInteger factorial(BigInteger n) {
 		BigInteger prod = new BigInteger(n.toString());
-		if(n.compareTo(BigInteger.ZERO)) == -1){
+		if(n.compareTo(BigInteger.ZERO) == -1){
 			throw new NumberFormatException();
 		}
-		if(n.compareTo(BigInteger.ZERO) == 0) {
-			prod = BigInter.ONE;
+		else if(n.compareTo(BigInteger.ZERO) == 0) {
+			prod = BigInteger.ONE;
 		}
 		// If n is negative, "throw an exception"
 		else{
-			prod = n;
-			for(BigInteger i=n-1; i>1; i--)
-				prod *= i;			
+			for(BigInteger i=n.subtract(BigInteger.ONE);
+		i.compareTo(BigInteger.ONE) == 1; i=i.subtract(BigInteger.ONE))
+				prod = prod.multiply(i) ;			
 		}
 		return prod;
 	}
