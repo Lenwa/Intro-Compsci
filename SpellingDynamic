@@ -28,7 +28,7 @@ public class Spelling {
     //wasn't sure what to call a JFrame method, Object seems to work, 
     //so does returning frame, hope that's the best way to do it
     
-    private static Object frame(){
+    private static class frame(){
         ImageIcon adventure = new ImageIcon("C:\\Users\\Kyle\\"
                 + "Desktop\\Programs\\Icons\\adventure.jpeg");
         JFrame frame = new JFrame();
@@ -47,7 +47,6 @@ public class Spelling {
         panel.add(button);
         panel.add(new JLabel(adventure));
         frame.add(panel);
-        return frame;
     }
     //executed when "Start" button is pressed 
     private static class Action implements ActionListener{
