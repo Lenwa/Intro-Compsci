@@ -16,7 +16,7 @@ import java.awt.event.*;
 import java.awt.*;
 import javax.swing.plaf.FontUIResource;
 
-public class Spelling {
+public class SpellingDynamic {
     
     public static void main(String[] args) {
         //changes font on all OptionPanes
@@ -28,7 +28,7 @@ public class Spelling {
     //wasn't sure what to call a JFrame method, Object seems to work, 
     //so does returning frame, hope that's the best way to do it
     
-    private static class frame(){
+    private static void frame(){
         ImageIcon adventure = new ImageIcon("C:\\Users\\Kyle\\"
                 + "Desktop\\Programs\\Icons\\adventure.jpeg");
         JFrame frame = new JFrame();
@@ -47,12 +47,13 @@ public class Spelling {
         panel.add(button);
         panel.add(new JLabel(adventure));
         frame.add(panel);
+        
     }
     //executed when "Start" button is pressed 
     private static class Action implements ActionListener{
         public void actionPerformed (ActionEvent ev1){
             
-        File folder = new File("Images/");
+        File folder = new File("C:\\Users\\Kyle\\Desktop\\Programs\\Images");
         ArrayList<String> previous = new ArrayList<>();
         //creates a list out of an array 
         ArrayList<String> imgNames = new ArrayList<>
@@ -92,8 +93,8 @@ public class Spelling {
          catch(NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Something went wrong! "
             + "Choosing random number of questions", 
-            "Oops", JOptionPane.PLAIN_MESSAGE, 
-			new ImageIcon("Icons/random.jpg"));
+            "Oops", JOptionPane.PLAIN_MESSAGE, new ImageIcon("C:\\Users\\Kyle"
+                    + "\\Desktop\\Programs\\Icons\\random.jpg"));
             timeP1 = randQuest;
         }
         //if a number of questions entered is greater than the number of files
@@ -101,16 +102,16 @@ public class Spelling {
         if(timeP1 > numChoice){
             JOptionPane.showMessageDialog(null, "Something went wrong! "
             + "Choosing random number of questions", 
-            "Oops", JOptionPane.PLAIN_MESSAGE, 
-			new ImageIcon("Icons/random.jpg"));
+            "Oops", JOptionPane.PLAIN_MESSAGE, new ImageIcon("C:\\Users\\Kyle"
+                    + "\\Desktop\\Programs\\Icons\\random.jpg"));
             timeP1 = randQuest;
         }
         //same deal, if negative number is entered set to random
         else if(timeP1 < 0){
             JOptionPane.showMessageDialog(null, "Can't except negative numbers "
                    + "choosing random number of questions",                
-                   "Whoops", JOptionPane.PLAIN_MESSAGE, 
-				   new ImageIcon("Icons/random.jpg"));
+                   "Whoops", JOptionPane.PLAIN_MESSAGE, new ImageIcon("C:\\"
+                   + "Users\\Kyle"+ "\\Desktop\\Programs\\Icons\\random.jpg"));
             timeP1 = randQuest;
         }   
         while(count < timeP1){
@@ -134,7 +135,8 @@ public class Spelling {
                 answer = JOptionPane.showInputDialog(null, "Spell What You See", 
                 "Question " + count + " out of " + timeP1, 
                 JOptionPane.PLAIN_MESSAGE, 
-                new ImageIcon("Images/" + spellingWord), null, "");
+                new ImageIcon("C:\\Users\\Kyle\\Desktop\\Programs\\Images\\" + 
+                spellingWord), null, "");
                 //handles nullpointexceptions 
                 if(answer == null){               
                     break;
@@ -146,7 +148,8 @@ public class Spelling {
                        score++;
                        JOptionPane.showMessageDialog(null, "", "Great job!", 
                        JOptionPane.PLAIN_MESSAGE,
-                       new ImageIcon("Icons/goodjob.gif"));
+                       new ImageIcon("C:\\Users\\Kyle\\Desktop\\Programs\\Icons"
+                                + "\\goodjob.gif"));
                     }
                     //if answer is incorrect show what they entered and correct
                     //spelling
@@ -154,7 +157,8 @@ public class Spelling {
                         JOptionPane.showMessageDialog(null, 
                         "You entered:\n" + answer + "\n The correct spelling "
                          + "is\n "+ word , "Oops", JOptionPane.PLAIN_MESSAGE,
-                        new ImageIcon("Icons/incorrect.png"));
+                        new ImageIcon("C:\\Users\\Kyle\\Desktop\\Programs\\"
+                            + "Icons\\incorrect.png"));
                     }   
                 }
             }
@@ -164,7 +168,7 @@ public class Spelling {
            + score + " out of " + count + " words correctly!\n"
                + "Great job! Thanks for the adventure!", 
            "Thanks for playing!", JOptionPane.PLAIN_MESSAGE,
-           new ImageIcon("Icons/byefrog.png"));
+           new ImageIcon("C:/Users/Kyle/Desktop/Programs/Icons/byefrog.png"));
     }
 }
 }
