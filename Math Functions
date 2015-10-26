@@ -6,8 +6,15 @@
 //10/19/15
 // LM: 
 //functions and methods
+//Kyle Hicks
+//10/19/15
+// LM: 
+//functions and methods
 import javax.swing.JOptionPane;
 import java.math.BigInteger;
+/**This class is an introduction to the creation of methods
+  * This particular class has three defined methods
+  */
 public class Method {
 	public static void main(String[] args){
 		String data;
@@ -51,17 +58,36 @@ public class Method {
 
 		}
 	}
+	/** This method computes nth root of a number
+		@param radican The value inside the radical to be approximated.
+		@param index The particular root of the radical
+			4th root requires index to be 4 
+		@return The value of radicand raised to the 1/index power.
+		@see Math
+		*/
 	public static double qrt(double radican, int index){
 		return Math.pow(radican, 1.0/index); 
 	}//complete signature of a method
 	
-	//Discriminant method
+	/** This method computes the discrimanatory part of the quadratic equation
+		b^2 - sqrt(4*a*c)
+		@param a is the first coefficent of the polynominal 
+		@param b is the second coefficent of the polynomial 
+		@param c is the constant
+		@return the value of the discrimanant 
+		*/
 	public static double discrim(double a, double b, double c){
 		double temp = b*b - 4*a*c;
 		return temp;
 	}
-	//Factorial method
-	//try 
+	/** This method will return the factorial of a number taken from user input
+		Where n! = (n)(n-1)(n-2)(...)(3)(2)(1), and 0! = 1.
+		@param n is the number to factorialized 
+		@return The factorial n!
+		@see BigInteger
+		@see throws
+		@since 1.8
+		*/
 	public static BigInteger factorial(BigInteger n) {
 		BigInteger prod = new BigInteger(n.toString());
 		if(n.compareTo(BigInteger.ZERO) == -1){
@@ -70,7 +96,6 @@ public class Method {
 		else if(n.compareTo(BigInteger.ZERO) == 0) {
 			prod = BigInteger.ONE;
 		}
-		// If n is negative, "throw an exception"
 		else{
 			for(BigInteger i=n.subtract(BigInteger.ONE);
 		i.compareTo(BigInteger.ONE) == 1; i=i.subtract(BigInteger.ONE))
