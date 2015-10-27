@@ -25,10 +25,8 @@ public class SpellingDynamic {
         
         frame();
     }
-    //wasn't sure what to call a JFrame method, Object seems to work, 
-    //so does returning frame, hope that's the best way to do it
     
-    private static void frame(){
+    private static void frame() {
         ImageIcon adventure = new ImageIcon("C:\\Users\\Kyle\\"
                 + "Desktop\\Programs\\Icons\\adventure.jpeg");
         JFrame frame = new JFrame();
@@ -121,7 +119,7 @@ public class SpellingDynamic {
             //checks to see if image has been used in the same playthrough
             check = previous.contains(spellingWord);
             //adds image file name to array, so it can be checked against next
-            //playthrough
+            //loop
             previous.add(spellingWord);       
             if(check){
                 //added to make sure correct number of questions are displayed
