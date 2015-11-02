@@ -136,7 +136,8 @@ public class SpellingDynamic {
                 new ImageIcon("C:\\Users\\Kyle\\Desktop\\Programs\\Images\\" + 
                 spellingWord), null, "");
                 //handles nullpointexceptions 
-                if(answer == null){               
+                if(answer == null){
+                    count--;
                     break;
                     }
                 //checks user input for correct spelling, converts to lowercase
