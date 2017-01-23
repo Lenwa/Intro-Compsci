@@ -1,0 +1,16 @@
+package rationalclass;
+
+
+public class RCOp {
+    
+    public static void main(String[] args){
+        RationalClass r1 = new RationalClass(3,4),
+                      r2 = new RationalClass(4,5);
+        
+        System.out.println(r1.add(r2));
+        System.out.println(r1.subtract(r2));
+        System.out.println(r1.multiply(r2));
+        System.out.println(r1.divide(r2));
+        }
+    
+}
