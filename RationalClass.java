@@ -1,27 +1,27 @@
 package rational.pkgclass;
+package rationalclass;
 
-/**
- *
- * @author student
- */
+
 public class RationalClass {
     private int num;
     private int denom;
     
     
     public RationalClass(){
-        num = 1;
-        denom = 2;
-        
+        this(1,2);
     }
        
     public RationalClass(int num, int denom){
         this.num = num;
-        this.denom = denom;        
+        if(denom==0){
+            throw new IllegalArgumentException();
+        }
+        this.denom = denom;
     }
     
     public RationalClass(int num){
-        this.num = num;
+        this(num,1);
+        denom = 1;
     }
     
     public int getNum(){
@@ -32,28 +32,43 @@ public class RationalClass {
         return denom;
     }
     
-    public void setNum(){
+    public void setNum(int num){
         this.num = num;
     }
     
-    public void setDenom(){
+    public void setDenom(int denom){
+        if(denom==0){
+            throw new IllegalArgumentException();
+        }
         this.denom = denom;
     }
     
     public RationalClass add(RationalClass r){
-        return new RationalClass();
+        int num = this.num * r.denom + r.num * this.denom;
+        int denom = this.denom * r.denom;
+        return new RationalClass(num, denom);
     }
     
     public RationalClass subtract(RationalClass r){
-        return new RationalClass();
+        
+       return new RationalClass(this.num * r.denom - r.num * this.denom,
+       this.denom * r.denom);
     }
     
     public RationalClass multiply(RationalClass r){
-        return new RationalClass();
+        return new RationalClass(this.num * r.num, this.denom * r.denom);
     }
     
     public RationalClass divide(RationalClass r){
-        return new RationalClass();
+        return new RationalClass(this.num * r.denom, this.denom * r.num);
     }
     
+    private void Simplify(){
+        
     }
+    
+    @Override
+    public String toString(){
+        return (this.num + "/" + this.denom);
+    }
+}
